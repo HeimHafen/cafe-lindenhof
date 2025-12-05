@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Café Lindenhof – Kaffee, Kuchen & Nachbarschaft</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Café Lindenhof – kleines Nachbarschafts-Café mit hausgemachten Kuchen, gutem Kaffee und ruhiger Atmosphäre."
+  />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Café Lindenhof – Kaffee, Kuchen & Nachbarschaft" />
+  <meta
+    property="og:description"
+    content="Kleines Nachbarschafts-Café mit hausgemachten Kuchen, gutem Kaffee und ruhiger Atmosphäre."
+  />
+  <meta property="og:type" content="website" />
+  <!-- ggf. später eigene Domain einsetzen -->
+  <meta property="og:url" content="https://heimhafen.github.io/cafe-lindenhof/" />
+
+  <!-- Twitter Card (optional) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Café Lindenhof – Kaffee, Kuchen & Nachbarschaft" />
+  <meta
+    name="twitter:description"
+    content="Kleines Nachbarschafts-Café mit hausgemachten Kuchen, gutem Kaffee und ruhiger Atmosphäre."
+  />
+
+  <meta name="theme-color" content="#f7f3f0" />
+  <link rel="canonical" href="https://heimhafen.github.io/cafe-lindenhof/" />
+
+  <style>
+    :root {
+      --color-bg: #f7f3f0;
+      --color-surface: #ffffff;
+      --color-primary: #8c3b2a;
+      --color-primary-soft: #f3e0d9;
+      --color-accent: #f2a65a;
+      --color-text: #1e1816;
+      --color-text-soft: #5c4a43;
+      --color-border: #e2d6cf;
+
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      --radius-s: 6px;
+      --radius-m: 14px;
+
+      --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.08);
+
+      --space-xs: 0.4rem;
+      --space-s: 0.8rem;
+      --space-m: 1.2rem;
+      --space-l: 2rem;
+      --space-xl: 3rem;
+      --space-xxl: 4rem;
+
+      --content-width: 1040px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at top, #fffaf4 0, #f7f3f0 55%, #f0e6df 100%);
+      color: var(--color-text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--space-m);
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 243, 240, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(226, 214, 207, 0.8);
+    }
+
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-s) 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+    }
+
+    .brand__mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 30%, #fff5dc 0, transparent 55%),
+        radial-gradient(circle at 70% 80%, #f2a65a 0, #8c3b2a 70%);
+      border: 2px solid #ffffff;
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .brand__text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand__name {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .brand__tagline {
+      font-size: 0.78rem;
+      color: var(--color-text-soft);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-l);
+    }
+
+    .nav__list {
+      display: flex;
+      list-style: none;
+      gap: var(--space-m);
+      margin: 0;
+      padding: 0;
+      font-size: 0.95rem;
+    }
+
+    .nav__link {
+      padding: var(--space-xs) 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav__link:hover,
+    .nav__link--active {
+      border-bottom-color: var(--color-primary);
+    }
+
+    .nav__cta {
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, #8c3b2a, #b0553e);
+      color: #ffffff;
+      box-shadow: 0 8px 22px rgba(140, 59, 42, 0.35);
+    }
+
+    .nav__cta:hover {
+      filter: brightness(1.04);
+    }
+
+    .nav__toggle {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav__list,
+      .nav__cta {
+        display: none;
+      }
+
+      .nav--open .nav__list,
+      .nav--open .nav__cta {
+        display: flex;
+      }
+
+      .nav--open .nav__list {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        padding: var(--space-m);
+        background: rgba(247, 243, 240, 0.98);
+        border-bottom: 1px solid var(--color-border);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-s);
+      }
+
+      .nav--open .nav__cta {
+        margin: 0 var(--space-m) var(--space-m);
+      }
+
+      .nav__toggle {
+        display: inline-flex;
+      }
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: var(--space-xl) 0 var(--space-l);
+    }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero__content {
+      padding: var(--space-l);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 214, 207, 0.9);
+    }
+
+    .hero__eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 600;
+      color: var(--color-text-soft);
+      margin-bottom: var(--space-xs);
+    }
+
+    .hero__title {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      margin: 0 0 var(--space-m);
+    }
+
+    .hero__title span {
+      color: var(--color-primary);
+    }
+
+    .hero__text {
+      font-size: 1.02rem;
+      color: var(--color-text-soft);
+      margin-bottom: var(--space-m);
+    }
+
+    .hero__meta {
+      margin-bottom: var(--space-m);
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      border-radius: 999px;
+      padding: 0.75rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background: linear-gradient(135deg, #8c3b2a, #b0553e);
+      color: #ffffff;
+      box-shadow: 0 12px 26px rgba(140, 59, 42, 0.42);
+    }
+
+    .btn--primary:hover {
+      filter: brightness(1.04);
+    }
+
+    .btn--ghost {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(92, 74, 67, 0.25);
+      color: var(--color-text-soft);
+    }
+
+    .btn--ghost:hover {
+      background: #ffffff;
+    }
+
+    .hero__side-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: var(--space-m);
+      border: 1px solid rgba(226, 214, 207, 0.9);
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero__side-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-soft);
+      margin-bottom: var(--space-xs);
+      font-weight: 600;
+    }
+
+    .hero__opening {
+      font-size: 0.92rem;
+      margin-bottom: var(--space-m);
+      color: var(--color-text-soft);
+    }
+
+    .hero__chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    .chip {
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+    }
+
+    .chip--accent {
+      background: #ffe3c5;
+      color: #8c3b2a;
+    }
+
+    /* Sections allgemein */
+
+    .section {
+      padding: var(--space-xl) 0;
+    }
+
+    .section--alt {
+      background: rgba(255, 255, 255, 0.9);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section__header {
+      margin-bottom: var(--space-l);
+      max-width: 40rem;
+    }
+
+    .section__eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      color: var(--color-text-soft);
+      margin-bottom: var(--space-xs);
+    }
+
+    .section__title {
+      font-size: 1.6rem;
+      margin: 0 0 var(--space-s);
+    }
+
+    .section__intro {
+      font-size: 0.96rem;
+      color: var(--color-text-soft);
+    }
+
+    /* Angebot */
+
+    .offer__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: var(--space-l);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .offer__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .offer-list {
+      display: grid;
+      gap: var(--space-m);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .offer-item__title {
+      margin: 0 0 0.1rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .offer-item__text {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .offer__highlight {
+      border-radius: var(--radius-m);
+      padding: var(--space-m);
+      border: 1px solid rgba(226, 214, 207, 0.9);
+      background: linear-gradient(135deg, #fff8ee, #f3e0d9);
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .offer__highlight strong {
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Atmosphäre */
+
+    .atmosphere__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: var(--space-l);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .atmosphere__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .atmosphere__box {
+      border-radius: var(--radius-m);
+      padding: var(--space-m);
+      border: 1px solid rgba(226, 214, 207, 0.9);
+      background: rgba(255, 255, 255, 0.95);
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .atmosphere__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-s);
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .atmosphere__list li::before {
+      content: "• ";
+      color: var(--color-accent);
+    }
+
+    /* Infos & FAQ */
+
+    .info__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: var(--space-l);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .info__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info__table {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-s);
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .info__row strong {
+      display: inline-block;
+      min-width: 7rem;
+    }
+
+    .faq-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-s);
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .faq-list__q {
+      font-weight: 600;
+    }
+
+    .faq-list__a {
+      margin: 0.1rem 0 0;
+    }
+
+    /* Kontakt */
+
+    .contact__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: var(--space-l);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .contact__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-m);
+      padding: var(--space-m);
+      border: 1px solid rgba(226, 214, 207, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-group {
+      margin-bottom: var(--space-m);
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      font-family: var(--font-sans);
+      background: #fff;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: 2px solid var(--color-primary-soft);
+      border-color: var(--color-primary);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact__note {
+      font-size: 0.85rem;
+      color: var(--color-text-soft);
+      margin-top: var(--space-s);
+    }
+
+    .contact__meta {
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .contact__meta strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      border-top: 1px solid var(--color-border);
+      margin-top: var(--space-xl);
+      padding: var(--space-m) 0;
+      background: rgba(247, 243, 240, 0.96);
+    }
+
+    .site-footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--color-text-soft);
+    }
+
+    .site-footer__note {
+      font-size: 0.78rem;
+      color: var(--color-text-soft);
+    }
+
+    .site-footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-m);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true"></div>
+          <div class="brand__text">
+            <div class="brand__name">Café Lindenhof</div>
+            <div class="brand__tagline">Kaffee, Kuchen & Nachbarschaft</div>
+          </div>
+        </div>
+        <nav class="nav" id="main-nav">
+          <button
+            class="nav__toggle"
+            type="button"
+            aria-label="Navigation umschalten"
+            onclick="toggleNav()"
+          >
+            ☰
+          </button>
+          <ul class="nav__list">
+            <li><a href="#angebot" class="nav__link">Angebot</a></li>
+            <li><a href="#atmosphaere" class="nav__link">Atmosphäre</a></li>
+            <li><a href="#infos" class="nav__link">Öffnungszeiten & Lage</a></li>
+            <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+          </ul>
+          <button
+            class="nav__cta"
+            type="button"
+            onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})"
+          >
+            Tisch reservieren
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="start">
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <div class="hero__eyebrow">Nachbarschaftscafé</div>
+            <h1 class="hero__title">
+              Ein Ort für <span>ruhige Momente</span> zwischen Alltag und Stadttrubel.
+            </h1>
+            <p class="hero__text">
+              Im Café Lindenhof gibt es handgebrühten Kaffee, hausgemachten Kuchen und eine Atmosphäre, in der
+              man auch einfach mal in Ruhe sitzen darf – mit Buch, Laptop oder im Gespräch.
+            </p>
+            <p class="hero__meta">
+              Diese Website ist eine fiktive Demo-Seite. Sie zeigt, wie ein moderner Auftritt für ein kleines Café
+              aussehen kann – mit klaren Infos zu Angebot, Öffnungszeiten, Lage und Reservierung.
+            </p>
+            <div class="hero__actions">
+              <a href="#angebot" class="btn btn--primary">Kaffee & Kuchen entdecken</a>
+              <a href="#infos" class="btn btn--ghost">Öffnungszeiten ansehen</a>
+            </div>
+          </div>
+
+          <aside class="hero__side-card">
+            <div class="hero__side-title">Heutige Öffnungszeiten</div>
+            <p class="hero__opening">
+              Beispielhaft: Dienstag – Sonntag<br />
+              9:00 – 18:00 Uhr<br />
+              <span style="font-size:0.9em;">(Montag Ruhetag)</span>
+            </p>
+            <div class="hero__side-title" style="margin-top:1rem;">Was Sie erwartet</div>
+            <div class="hero__chip-row">
+              <span class="chip">Helle Sitzecken</span>
+              <span class="chip chip--accent">Steckdosen & WLAN</span>
+              <span class="chip">Leise Hintergrundmusik</span>
+              <span class="chip">Kinderfreundlich</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Angebot -->
+      <section class="section section--alt" id="angebot">
+        <div class="container">
+          <header class="section__header">
+            <div class="section__eyebrow">Angebot</div>
+            <h2 class="section__title">Kaffee, Kuchen & kleine Speisen</h2>
+            <p class="section__intro">
+              Das Café Lindenhof ist kein großes Restaurant, sondern ein überschaubares Nachbarschaftscafé.
+              Die Karte ist bewusst klein gehalten – mit Dingen, die wir gerne selbst serviert bekommen würden.
+            </p>
+          </header>
+
+          <div class="offer__grid">
+            <ul class="offer-list">
+              <li>
+                <h3 class="offer-item__title">Kaffeespezialitäten</h3>
+                <p class="offer-item__text">
+                  Espresso, Cappuccino, Flat White, Filterkaffee – wahlweise mit Hafer- oder Kuhmilch.
+                  Die Bohnen stammen von einer kleinen Rösterei aus der Region (Beispielangabe).
+                </p>
+              </li>
+              <li>
+                <h3 class="offer-item__title">Hausgemachte Kuchen</h3>
+                <p class="offer-item__text">
+                  Täglich wechselnde Auswahl, z.&nbsp;B. Käsekuchen, Zitronenkuchen, Schokotarte oder saisonale Obstkuchen.
+                  Ein Teil der Stücke ist als „ohne Nüsse“ oder „vegan“ gekennzeichnet.
+                </p>
+              </li>
+              <li>
+                <h3 class="offer-item__title">Kleine Frühstücks- & Mittagsangebote</h3>
+                <p class="offer-item__text">
+                  Einfache Frühstücksteller, belegte Brote und Suppen – ideal für eine kleine Pause.
+                  Keine komplizierte Karte, sondern wenige, verlässliche Klassiker.
+                </p>
+              </li>
+            </ul>
+
+            <aside class="offer__highlight">
+              <strong>So könnte eine digitale Speisekarte aussehen:</strong>
+              <p>
+                Diese Demo-Seite bildet nur einen Ausschnitt ab. In einer echten Umsetzung könnten Sie hier
+                Ihre aktuelle Karte pflegen – mit Kennzeichnungen für Allergene, „beliebte Klassiker“ und
+                saisonale Angebote. Auf dem Smartphone gut lesbar, ohne PDF-Download.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Atmosphäre -->
+      <section class="section" id="atmosphaere">
+        <div class="container">
+          <header class="section__header">
+            <div class="section__eyebrow">Atmosphäre</div>
+            <h2 class="section__title">Ein ruhiger Ort mitten im Viertel</h2>
+            <p class="section__intro">
+              Die Einrichtung ist schlicht, warm und unaufdringlich. Viel Holz, ein paar Pflanzen, Tageslicht
+              durch große Fenster – und keine Dauerbeschallung, die das Gespräch übertönt.
+            </p>
+          </header>
+
+          <div class="atmosphere__grid">
+            <div>
+              <div class="atmosphere__box">
+                <p>
+                  Diese Demo zeigt, wie man Atmosphäre auch ohne große Bilder sichtbar machen kann:
+                  durch klare Beschreibung der Plätze, Hinweise zu Lautstärke, Kinderfreundlichkeit
+                  und Arbeitsmöglichkeiten (WLAN, Steckdosen).
+                </p>
+                <p>
+                  Für ein echtes Café könnten hier Fotos, Eindrücke vom Tresen, der Kuchentheke oder von
+                  besonderen Details (z.&nbsp;B. einer Leseecke) ergänzt werden.
+                </p>
+              </div>
+            </div>
+
+            <ul class="atmosphere__list">
+              <li>Verschiedene Bereiche: ruhigere Ecken, Platz für Kinderwagen, Sitzplätze am Fenster.</li>
+              <li>Hintergrundmusik auf Zimmerlautstärke, kein permanenter Fernseher oder Radiostationen.</li>
+              <li>Freies WLAN, ein paar Steckdosen-Plätze für konzentriertes Arbeiten.</li>
+              <li>Kleine Spielekiste und Kinderstühle für Familienbesuch.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Öffnungszeiten & Lage -->
+      <section class="section section--alt" id="infos">
+        <div class="container">
+          <header class="section__header">
+            <div class="section__eyebrow">Öffnungszeiten & Lage</div>
+            <h2 class="section__title">So finden Sie zum Café Lindenhof</h2>
+            <p class="section__intro">
+              Für Gäste zählt vor allem: Wann ist geöffnet? Wie komme ich hin? Gibt es Parkplätze oder
+              eine gute ÖPNV-Anbindung? Genau diese Fragen beantwortet dieser Abschnitt – ohne langes Suchen.
+            </p>
+          </header>
+
+          <div class="info__grid">
+            <div>
+              <ul class="info__table">
+                <li class="info__row">
+                  <strong>Adresse:</strong>
+                  Musterstraße 12, 12345 Lindenstadt
+                </li>
+                <li class="info__row">
+                  <strong>Öffnungszeiten:</strong>
+                  Di – So · 9:00–18:00 Uhr, Mo Ruhetag
+                </li>
+                <li class="info__row">
+                  <strong>ÖPNV:</strong>
+                  Beispielhaft: Straßenbahnlinie 3, Haltestelle „Lindenplatz“ (3&nbsp;Min. zu Fuß)
+                </li>
+                <li class="info__row">
+                  <strong>Parken:</strong>
+                  Einige Kurzzeitparkplätze in der Straße, größere Parkplätze in fußläufiger Nähe
+                </li>
+                <li class="info__row">
+                  <strong>Hinweis:</strong>
+                  Terrasse in der warmen Jahreszeit, drinnen klimatisiert, im Winter gut beheizt
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul class="faq-list">
+                <li>
+                  <div class="faq-list__q">Kann ich bei Ihnen arbeiten oder lernen?</div>
+                  <p class="faq-list__a">
+                    Ja – es gibt WLAN und einige Plätze mit Steckdosen. Wir bitten nur darum, Spitzenzeiten
+                    (z.&nbsp;B. Samstagnachmittag) im Blick zu behalten, damit alle einen Platz finden.
+                  </p>
+                </li>
+                <li>
+                  <div class="faq-list__q">Sind Kinder willkommen?</div>
+                  <p class="faq-list__a">
+                    Auf jeden Fall. Es gibt Kinderstühle, eine kleine Spielekiste und Platz für Kinderwagen.
+                  </p>
+                </li>
+                <li>
+                  <div class="faq-list__q">Gibt es vegane oder glutenfreie Angebote?</div>
+                  <p class="faq-list__a">
+                    In dieser Demo ist das nur beispielhaft erwähnt. In einer echten Umsetzung könnten Sie
+                    hier Ihre Optionen genau aufführen und kennzeichnen.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kontakt / Reservierung -->
+      <section class="section" id="kontakt">
+        <div class="container">
+          <header class="section__header">
+            <div class="section__eyebrow">Kontakt & Reservierung</div>
+            <h2 class="section__title">Tisch reservieren oder Anfrage stellen</h2>
+            <p class="section__intro">
+              Für ein kleines Café reichen oft schon wenige, gut platzierte Kontaktpunkte: eine klare Telefonnummer,
+              eine E-Mail-Adresse und optional ein einfaches Formular für Reservierungswünsche.
+            </p>
+          </header>
+
+          <div class="contact__grid">
+            <form class="contact-form">
+              <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Ihr Name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">E-Mail</label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="name@beispiel.de"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="details">Datum, Uhrzeit & Personenzahl</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="details"
+                  name="details"
+                  placeholder="z. B. Samstag, 15 Uhr, 3 Personen"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="message">Hinweise oder Fragen</label>
+                <textarea
+                  class="form-textarea"
+                  id="message"
+                  name="message"
+                  placeholder="Optional: Kinderwagen dabei? Bestimmter Platzwunsch? Anlass?"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary">Reservierungsanfrage senden (Demo)</button>
+              <p class="contact__note">
+                Hinweis: Dieses Formular ist in dieser Demo nicht angebunden. In einem realen Projekt würde es
+                direkt mit Ihrem E-Mail-Postfach oder einem Reservierungstool verbunden.
+              </p>
+            </form>
+
+            <div class="contact__meta">
+              <p>
+                <strong>Beispielhafte Kontaktdaten</strong>
+                Café Lindenhof<br />
+                Musterstraße 12<br />
+                12345 Lindenstadt
+              </p>
+              <p>
+                Telefon: 01234&nbsp;/&nbsp;567890<br />
+                E-Mail: <a href="mailto:hallo@cafe-lindenhof.de">hallo@cafe-lindenhof.de</a>
+              </p>
+              <p>
+                In einer echten Umsetzung könnten hier außerdem Hinweise zur Erreichbarkeit, Stoßzeiten
+                und Specials (Frühstück am Wochenende, Veranstaltungen) ergänzt werden.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div>© <span id="year"></span> Café Lindenhof (Demo)</div>
+        <div class="site-footer__links">
+          <span class="site-footer__note">
+            Demo-Website, erstellt als Beispielprojekt von HeimHafen Web. Alle Inhalte sind fiktiv.
+          </span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function toggleNav() {
+      const nav = document.getElementById("main-nav");
+      nav.classList.toggle("nav--open");
+    }
+  </script>
+</body>
+</html>
