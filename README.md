@@ -1,6 +1,6 @@
 ---
 
-## 3) `cafe-lindenhof` → `README.md`
+### 3) `cafe-lindenhof` → `README.md`
 
 ```md
 # Café Lindenhof (Demo)
